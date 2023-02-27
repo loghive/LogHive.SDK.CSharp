@@ -16,7 +16,6 @@ The library is written in:
 1. [General](#general)
 2. [Requirements](#requirements)
 3. [Documentation](#documentation)
-3. [Dokumentation Deutsch](#documentation-german)
 
 ## General
 Integration is very easy, a simple REST command is all that's needed to store your event in our lodatabase.
