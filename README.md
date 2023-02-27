@@ -4,7 +4,7 @@
 This c# example libary is a SDK for the LogHive event and log service. 
 LogHive is a log and event service specifically designed for software applications such as apps, websites, or services.
 
-Checkout the NuGet Package: [![NuGet](https://img.shields.io/nuget/v/LogHive.svg)](https://www.nuget.org/packages/LogHive/)
+Checkout the NuGet Package: [![NuGet](https://img.shields.io/nuget/v/LogHive.svg)](https://www.nuget.org/packages/LogHive)
 
 Licence: MIT
 

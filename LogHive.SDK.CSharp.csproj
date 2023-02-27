@@ -13,7 +13,7 @@
 		  LogHive is a log and event service specifically designed for software applications such as apps, websites, or services.
 	  </Description>
 	  <RepositoryUrl>https://github.com/loghive/LogHive.SDK.CSharp</RepositoryUrl>
-	  <PackageProjectUrl>https://github.com/loghive/LogHive.SDK.CSharp</PackageProjectUrl>
+	  <PackageProjectUrl>https://www.loghive.app</PackageProjectUrl>
 	  <PackageIcon>loghive-icon.png</PackageIcon>
 	  <PackageReadmeFile>README.md</PackageReadmeFile>
 	  <PackageTags>event-tracking;log-management;log-tracking;log-interface;log-dashboard;error-logs;</PackageTags>
