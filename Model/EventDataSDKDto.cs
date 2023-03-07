@@ -1,4 +1,6 @@
-﻿namespace LogHive.SDK.CSharp.Model
+﻿using System;
+
+namespace LogHive.SDK.CSharp.Model
 {
     public class EventDataSDKDto
     {

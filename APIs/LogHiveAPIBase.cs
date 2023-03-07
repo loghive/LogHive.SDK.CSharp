@@ -1,63 +1,65 @@
 ﻿using LogHive.Model;
-using Newtonsoft.Json;
-using System.Net.Http.Headers;
+using System;
+using System.Net.Http;
 using System.Net.Http.Json;
+using System.Threading.Tasks;
 
-namespace LogHive.SDK.CSharp.APIs;
-
-internal abstract class LogHiveAPIBase : IDisposable
+namespace LogHive.SDK.CSharp.APIs
 {
-    protected readonly string _apiToken;
-    protected readonly string _url = @"https://api.loghive.app/v1/";
-    private readonly HttpClient _httpClient;
-
-    public LogHiveAPIBase(string apiToken, string url = "")
+    internal abstract class LogHiveAPIBase : IDisposable
     {
-        _apiToken = apiToken;
+        protected readonly string _apiToken;
+        protected readonly string _url = @"https://api.loghive.app/v1/";
+        private readonly HttpClient _httpClient;
 
-        if (url != "" && url.Length > 0)
-            _url = url.Substring(url.Length - 1, 1) == "/" ? url : $"{url}/";
-
-        _httpClient = new HttpClient();
-        _httpClient.DefaultRequestHeaders.Add("ApiKey", apiToken);
-    }
-
-    public void Dispose()
-    {
-        _httpClient?.Dispose();
-    }
-
-    public async Task<EventPushFeedbackDto> PostAsync(string url, object data)
-    {
-        try
+        public LogHiveAPIBase(string apiToken, string url = "")
         {
-            var response = await _httpClient.PostAsJsonAsync(url, data);
-            if (!response.IsSuccessStatusCode)
+            _apiToken = apiToken;
+
+            if (url != "" && url.Length > 0)
+                _url = url.Substring(url.Length - 1, 1) == "/" ? url : $"{url}/";
+
+            _httpClient = new HttpClient();
+            _httpClient.DefaultRequestHeaders.Add("ApiKey", apiToken);
+        }
+
+        public void Dispose()
+        {
+            _httpClient?.Dispose();
+        }
+
+        public async Task<EventPushFeedbackDto> PostAsync(string url, object data)
+        {
+            try
             {
+                var response = await _httpClient.PostAsJsonAsync(url, data);
+                if (!response.IsSuccessStatusCode)
+                {
+                    return new EventPushFeedbackDto()
+                    {
+                        Error = true,
+                        ErrorMessage = await response.Content.ReadAsStringAsync(),
+                        ResponseCode = (int)response.StatusCode
+                    };
+                }
+
+                var content = await response.Content.ReadAsStringAsync();
                 return new EventPushFeedbackDto()
                 {
-                    Error = true,
+                    Error = false,
                     ErrorMessage = await response.Content.ReadAsStringAsync(),
                     ResponseCode = (int)response.StatusCode
                 };
             }
-
-            var content = await response.Content.ReadAsStringAsync();
-            return new EventPushFeedbackDto()
+            catch (Exception ex)
             {
-                Error = false,
-                ErrorMessage = await response.Content.ReadAsStringAsync(),
-                ResponseCode = (int)response.StatusCode
-            };
+                return new EventPushFeedbackDto()
+                {
+                    Error = true,
+                    ErrorMessage = ex.Message,
+                    ResponseCode = 400
+                };
+            }
         }
-        catch (Exception ex)
-        {
-            return new EventPushFeedbackDto()
-            {
-                Error = true,
-                ErrorMessage = ex.Message,
-                ResponseCode = 400
-            };
-        } 
     }
 }

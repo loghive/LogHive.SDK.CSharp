@@ -1,16 +1,15 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-	  <ImplicitUsings>enable</ImplicitUsings>
-	  <VersionPrefix>1.0.0</VersionPrefix>
+	  <TargetFrameworks>netstandard2.1;net6.0</TargetFrameworks>
+	  <ImplicitUsings>disable</ImplicitUsings>
+	  <VersionPrefix>1.1.0</VersionPrefix>
     <Nullable>enable</Nullable>
 	  <AssemblyName>LogHive</AssemblyName>
 	  <RootNamespace>LogHive</RootNamespace>
 	  <PackageLicenseExpression>MIT</PackageLicenseExpression>
 	  <Description>
-		  This c# example libary is a SDK for the LogHive event and log service.
-		  LogHive is a log and event service specifically designed for software applications such as apps, websites, or services.
+		  This c# libary is a SDK for the LogHive event and log service. LogHive is a log and event service specifically designed for software applications such as apps, websites, or services. With LogHive, push notifications can be sent to the web browser or to a mobile device, or the log messages can be analyzed in a separate dashboard.
 	  </Description>
 	  <RepositoryUrl>https://github.com/loghive/LogHive.SDK.CSharp</RepositoryUrl>
 	  <PackageProjectUrl>https://www.loghive.app</PackageProjectUrl>
@@ -30,10 +29,11 @@
 
 	<ItemGroup>
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+		<PackageReference Include="System.Net.Http.Json" Version="7.0.0" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<None Update="loghive-icon.png">
+		<None Include="loghive-icon.png">
 			<Pack>True</Pack>
 			<PackagePath>\</PackagePath>
 		</None>
