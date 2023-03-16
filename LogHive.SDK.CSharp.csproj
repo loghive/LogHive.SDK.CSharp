@@ -16,7 +16,7 @@
 	  <PackageIcon>loghive-icon.png</PackageIcon>
 	  <PackageReadmeFile>README.md</PackageReadmeFile>
 	  <PackageTags>event-tracking;log-management;log-tracking;log-interface;log-dashboard;error-logs;</PackageTags>
-	  <Title>This c# example libary is a SDK for the LogHive event and log service. LogHive is a log and event service specifically designed for software applications such as apps, websites, or services.</Title>
+	  <Title>This c# libary is a SDK for the LogHive event and log service. LogHive is a log and event service specifically designed for software applications such as apps, websites, or services.</Title>
 	  <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
 

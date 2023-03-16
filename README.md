@@ -1,7 +1,7 @@
 # LogHive.SDK.CSharp
 This c# libary is a SDK for the LogHive event and log service. 
 LogHive is a log and event service specifically designed for software applications such as apps, websites, or services.
-		  With LogHive, push notifications can be sent to the web browser or to a mobile device, or the log messages can be analyzed in a separate dashboard.
+With LogHive, push notifications can be sent to the web browser or to a mobile device, or the log messages can be analyzed in a separate dashboard.
 
 Checkout the NuGet Package: [![NuGet](https://img.shields.io/nuget/v/LogHive.svg)](https://www.nuget.org/packages/LogHive)
 
@@ -19,7 +19,7 @@ The library is written in:
 3. [Init](#init)
 
 ## General
-Integration is very easy, a simple REST command is all that's needed to store your event in our lodatabase.
+Integration is very easy, a simple REST command is all that's needed to store your event in our database.
 This libary packs the http client into a nuget package. So you can push an event with just two lines of code.
 
 ## Requirements
