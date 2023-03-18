@@ -3,7 +3,7 @@
   <PropertyGroup>
 	  <TargetFrameworks>netstandard2.1;net6.0</TargetFrameworks>
 	  <ImplicitUsings>disable</ImplicitUsings>
-	  <VersionPrefix>1.1.0</VersionPrefix>
+	  <VersionPrefix>1.1.2</VersionPrefix>
     <Nullable>enable</Nullable>
 	  <AssemblyName>LogHive</AssemblyName>
 	  <RootNamespace>LogHive</RootNamespace>
@@ -24,6 +24,7 @@
 		<None Include="README.md">
 			<Pack>True</Pack>
 			<PackagePath>\</PackagePath>
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</None>
 	</ItemGroup>
 

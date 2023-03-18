@@ -16,9 +16,7 @@ The library is written in:
 1. [General](#general)
 2. [Requirements](#requirements)
 3. [Documentation](#documentation)
-3. [Usage](#init)
-3.1 [Event](#event)
-3.2 [Insight](#insight)
+4. [Usage](#usage)
 
 ## General
 Integration is very easy, a simple REST command is all that's needed to store your event in our database.
