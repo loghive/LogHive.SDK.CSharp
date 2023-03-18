@@ -1,4 +1,6 @@
-﻿using LogHive.Model;
+﻿using LogHive.APIs;
+using LogHive.Contracts;
+using LogHive.Model;
 using LogHive.SDK.CSharp.APIs;
 using LogHive.SDK.CSharp.Contracts;
 using LogHive.SDK.CSharp.Model;
@@ -12,6 +14,7 @@ namespace LogHive.SDK.CSharp
     public class LogHiveApi
     {
         private readonly IEventChannelAPI _eventChannelAPI;
+        private readonly IInsightChannelAPI _insightChannelAPI;
 
         /// <summary>
         /// Constructor fasade class API
@@ -21,6 +24,7 @@ namespace LogHive.SDK.CSharp
         public LogHiveApi(string key, string url = "")
         {
             _eventChannelAPI = new EventChannelAPI(key, url);
+            _insightChannelAPI = new InsightChannelAPI(key, url);
         }
 
         /// <summary>
@@ -33,9 +37,9 @@ namespace LogHive.SDK.CSharp
         /// <param name="description">optional description</param>
         /// <param name="tags">optional: add tags</param>
         /// <returns></returns>
-        public async Task<EventPushFeedbackDto> AddEventAsync(string projectName, string groupName, string eventName, string description = "", bool notify = false, string tags = "")
+        public async Task<FeedbackDto> AddEventAsync(string projectName, string groupName, string eventName, string description = "", bool notify = false, string tags = "")
         {
-            var eventDs = new EventDataSDKDto()
+            var request = new EventDataSDKDto()
             {
                 ProjectName = projectName,
                 GroupName = groupName,
@@ -44,7 +48,59 @@ namespace LogHive.SDK.CSharp
                 Notify = notify,
                 Tags = tags
             };
-            return await _eventChannelAPI.AddEventAsync(eventDs);
+            return await _eventChannelAPI.AddEventAsync(request);
+        }
+
+        /// <summary>
+        /// push a insight
+        /// </summary>
+        /// <param name="projectName">name of the project</param>
+        /// <param name="insightName">name of the insight</param>
+        /// <param name="value">value of the insight</param>
+        /// <returns></returns>
+        public async Task<FeedbackDto> AddInsightAsync(string projectName, string insightName, double value)
+        {
+            var request = new InsightDataSDKDto()
+            {
+                ProjectName = projectName,
+                Name = insightName,
+                Value = value
+            };
+            return await _insightChannelAPI.AddInsightAsync(request);
+        }
+
+        /// <summary>
+        /// set system online
+        /// </summary>
+        /// <param name="projectName">name of the project</param>
+        /// <param name="systemName">name of system</param>
+        /// <returns></returns>
+        public async Task<FeedbackDto> SetSystemOnlineAsync(string projectName, string systemName)
+        {
+            var request = new InsightDataSDKDto()
+            {
+                ProjectName = projectName,
+                Name = systemName,
+                Value = 1
+            };
+            return await _insightChannelAPI.AddInsightAsync(request);
+        }
+
+        /// <summary>
+        /// set system offline
+        /// </summary>
+        /// <param name="projectName">name of the project</param>
+        /// <param name="systemName">name of system</param>
+        /// <returns></returns>
+        public async Task<FeedbackDto> SetSystemOfflineAsync(string projectName, string systemName)
+        {
+            var request = new InsightDataSDKDto()
+            {
+                ProjectName = projectName,
+                Name = systemName,
+                Value = 0
+            };
+            return await _insightChannelAPI.AddInsightAsync(request);
         }
     }
 }

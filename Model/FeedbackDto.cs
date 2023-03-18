@@ -2,7 +2,7 @@
 
 namespace LogHive.Model
 {
-    public class EventPushFeedbackDto
+    public class FeedbackDto
     {
         public bool? Error { get; set; }
         public string? ErrorMessage { get; set; } = String.Empty;

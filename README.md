@@ -16,7 +16,9 @@ The library is written in:
 1. [General](#general)
 2. [Requirements](#requirements)
 3. [Documentation](#documentation)
-3. [Init](#init)
+3. [Usage](#init)
+3.1 [Event](#event)
+3.2 [Insight](#insight)
 
 ## General
 Integration is very easy, a simple REST command is all that's needed to store your event in our database.
@@ -28,10 +30,25 @@ To use this API you need an API key.  You can register for a free API key at [ht
 ## Documentation
 A full documentation is available under [https://docs.loghive.app/](https://docs.loghive.app/).
 
-### Init
+## Usage
 With the following code, you init the http client with your personal API key:
 ```c#
 var logger = new LogHiveApi("your-api-key");
+```
+
+### Push an Event
+```c#
 var notification = false;
 var response = await logger.AddEventAsync("yourprojectname", "yourgroupname", "your-event-name", "descripton", notification);
+```
+
+### Set a Insight
+```c#
+var response = await logger.AddInsightAsync("yourprojectname", "insightname", 10);
+```
+
+### Set Online State
+```c#
+var response = await logger.SetSystemOnlineAsync("yourprojectname", "systemname");
+var response = await logger.SetSystemOfflineAsync("yourprojectname", "systemname");
 ```

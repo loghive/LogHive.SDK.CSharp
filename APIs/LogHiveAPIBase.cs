@@ -28,14 +28,14 @@ namespace LogHive.SDK.CSharp.APIs
             _httpClient?.Dispose();
         }
 
-        public async Task<EventPushFeedbackDto> PostAsync(string url, object data)
+        public async Task<FeedbackDto> PostAsync(string url, object data)
         {
             try
             {
                 var response = await _httpClient.PostAsJsonAsync(url, data);
                 if (!response.IsSuccessStatusCode)
                 {
-                    return new EventPushFeedbackDto()
+                    return new FeedbackDto()
                     {
                         Error = true,
                         ErrorMessage = await response.Content.ReadAsStringAsync(),
@@ -44,7 +44,7 @@ namespace LogHive.SDK.CSharp.APIs
                 }
 
                 var content = await response.Content.ReadAsStringAsync();
-                return new EventPushFeedbackDto()
+                return new FeedbackDto()
                 {
                     Error = false,
                     ErrorMessage = await response.Content.ReadAsStringAsync(),
@@ -53,7 +53,7 @@ namespace LogHive.SDK.CSharp.APIs
             }
             catch (Exception ex)
             {
-                return new EventPushFeedbackDto()
+                return new FeedbackDto()
                 {
                     Error = true,
                     ErrorMessage = ex.Message,

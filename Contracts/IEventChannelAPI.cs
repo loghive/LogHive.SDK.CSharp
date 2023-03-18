@@ -12,6 +12,6 @@ namespace LogHive.SDK.CSharp.Contracts
         /// <summary>
         /// push a event
         /// </summary>
-        public Task<EventPushFeedbackDto> AddEventAsync(EventDataSDKDto eventData);
+        public Task<FeedbackDto> AddEventAsync(EventDataSDKDto eventData);
     }
 }

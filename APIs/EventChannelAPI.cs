@@ -13,10 +13,10 @@ namespace LogHive.SDK.CSharp.APIs
         {
         }
 
-        public async Task<EventPushFeedbackDto> AddEventAsync(EventDataSDKDto eventData)
+        public async Task<FeedbackDto> AddEventAsync(EventDataSDKDto request)
         {
             var url = $"{_url}{_endpoint}";
-            return await PostAsync(url, eventData);
+            return await PostAsync(url, request);
         }
     }
 }
